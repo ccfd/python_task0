@@ -56,16 +56,22 @@ def PowerModulo(a,b,n):
     if a%n==0:
         return 0
     else:
-        #tab = []
-        rest=1
-        for i in range(b):
-            rest *= a
-            rest=rest%n
-            #tab.append(rest)
-            #if tab[-1]==tab[0] and len(tab)>1:
-                #return tab[b%(len(tab))]
-    return rest
-
+        if b<5:
+            rest=1
+            for i in range(b):
+                rest *= a
+                rest=rest%n
+            return rest
+        else:
+            number=2
+            sol=a**2%n
+            while number<=b:
+                if number*2<b:
+                    number*=2
+                    sol=sol**2%n
+                else:
+                    sol=(sol*PowerModulo(a,b-number,n))%n
+                    return sol
 
 def Intersect(a,b):
     def SquareFunction(a, b, c):
