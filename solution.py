@@ -1,5 +1,5 @@
-from scipy.spatial import distance
-import matplotlib.pyplot as plt
+###from scipy.spatial import distance
+###import matplotlib.pyplot as plt
 
 
 def Newton(n,m):
@@ -96,12 +96,12 @@ def Intersect(a,b):
     if not c2==0:
         c7=-c1/c2
         c8=c6/c2-y1
-    dist = distance.euclidean((x1, y1), (x2, y2))
+    dist=((x1-x2)**2+(y1-y2)**2)**0.5
     s=[]
-    e = [x2 - x1, y2 - y1] / dist
+    e = [(x2 - x1)/dist, (y2 - y1)/dist]
     if dist == (r1 + r2) or dist == abs(r1-r2):
         s.append((e[0] * r1 + x1, e[1] * r1 + y1))
-    if dist<(r1+r2):
+    elif dist<(r1+r2):
         if not c2==0:
             solution=SquareFunction(c7+1,2*(c7*c8-x1),x1**2+c8**2-r1**2)
             s.append((solution[0],c7*solution[0]+c8+y1))
@@ -126,8 +126,6 @@ def Intersect(a,b):
 #    plt.show()
 ##############
     return s
-
-
 
 
 
