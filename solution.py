@@ -69,3 +69,4 @@ def Intersect(a,b):
                 inter1 = (x1 + x*w[0] + h*w[1], y1 + x*w[1] - h*w[0])
                 inter2 = (x1 + x*w[0] - h*w[1], y1 + x*w[1] + h*w[0])
                 return [inter1, inter2]
+
