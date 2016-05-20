@@ -18,12 +18,20 @@ then
   exit -2
 fi
 
+FAIL=""
 echo "--- Running Tests ---"
 for i in $(ls .test/test*.py)
 do
 	if ! python $i
 	then
-		echo "Test '$i' failed"
-		exit -3
+		FAIL="$FAIL $i"
+	else
+		echo "-> Passed"
 	fi
 done
+
+if ! test -z "$FAIL"
+then
+	echo "Some tests failed: $FAIL"
+	exit -3
+fi
