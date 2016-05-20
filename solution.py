@@ -12,3 +12,15 @@ def Newton(n, m):
 
 
 
+def Pascal(n):
+        pass
+
+
+def LotOfHash(n):
+        pass
+
+def PowerModulo(a, b, n):
+        pass
+
+def Intersect(a,b):
+        pass
