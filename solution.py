@@ -62,6 +62,7 @@ def Intersect(a,b):
         elif l == r1 + r2:
                 inter = [x1 + w[0]*r1, y1 + w[1]*r1]
                 return inter
+        
         else:
                 x = (pow(l,2) + pow(r1, 2) - pow(r2, 2))/(2*l)
                 h = pow(pow(r1,2) - pow(x,2), 0.5)
