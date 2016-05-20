@@ -60,14 +60,12 @@ def Intersect(a,b):
                 return []
 
         elif l == r1 + r2:
-                inter = [x1 + w[0]*r1, y1 + w[1]*r1]
-                return inter
-        
+                inter = (x1 + w[0]*r1, y1 + w[1]*r1)
+                return [inter]
+
         else:
                 x = (pow(l,2) + pow(r1, 2) - pow(r2, 2))/(2*l)
                 h = pow(pow(r1,2) - pow(x,2), 0.5)
-                inter1 = [x1 + x*w[0] + h*w[1], y1 + x*w[1] - h*w[0]]
-                inter2 = [x1 + x*w[0] - h*w[1], y1 + x*w[1] + h*w[0]]
+                inter1 = (x1 + x*w[0] + h*w[1], y1 + x*w[1] - h*w[0])
+                inter2 = (x1 + x*w[0] - h*w[1], y1 + x*w[1] + h*w[0])
                 return [inter1, inter2]
-
-
