@@ -12,7 +12,7 @@ do
 done
 
 echo "--- Running test.py ---"
-if ! python test.py >/dev/null
+if ! .test/timeout -t 60 python test.py >/dev/null
 then
   echo "Running test.py failed"
   exit -2
@@ -22,9 +22,10 @@ FAIL=""
 echo "--- Running Tests ---"
 for i in $(ls .test/test*.py)
 do
-	if ! python $i
+	if ! .test/timeout -t 60 python $i
 	then
 		FAIL="$FAIL $i"
+		echo "-> Failed"
 	else
 		echo "-> Passed"
 	fi
@@ -32,6 +33,6 @@ done
 
 if ! test -z "$FAIL"
 then
-	echo "Some tests failed: $FAIL"
+	echo "Some tests failed."
 	exit -3
 fi
