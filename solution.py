@@ -52,8 +52,6 @@ def PowerModulo(a, b, n):
 
 
 
-
-
 def Intersect(a,b):
         x1, y1, r1 = a
         x2, y2, r2 = b
