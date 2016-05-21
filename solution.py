@@ -38,12 +38,19 @@ def LotOfHash(n):
 
 
 def PowerModulo(a, b, n):
-        c = 1
-        e = 0
-        while e < b:
-                e += 1
-                c = (a * c) % n
-        return c
+
+        binary = bin(b)[2:]
+        wynik = 1
+        i = 0
+        m = a % n
+        while i < len(binary):
+                if binary[-1-i] == "1":
+                        wynik = wynik*m % n
+                i += 1
+                m = pow(m, 2) % n
+        return wynik
+
+
 
 
 
