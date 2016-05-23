@@ -28,10 +28,14 @@ def LotOfHash(n):
 
 def PowerModulo(a,b,n):
 
-    out = a
-    for k in range(0, b-1):
-        out=(out*a)%n
-    return out
+    out = 1
+    if(b%2==0):
+        for k in range(0, b/2):
+            out = out * a**2
+    else:
+        for k in range(0, b):
+            out=out*a
+    return out%n
 
 def Intersect(a,b):
     import math
