@@ -27,7 +27,11 @@ def LotOfHash(n):
         print "".join(triangle_line)
 
 def PowerModulo(a,b,n):
-    return (a**b)%n
+
+    out = a
+    for k in range(0, b-1):
+        out=(out*a)%n
+    return out
 
 def Intersect(a,b):
     import math
