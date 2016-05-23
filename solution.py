@@ -26,21 +26,20 @@ def LotOfHash(n):
                 triangle_line.append(" ")
         print "".join(triangle_line)
 
-def PowerModulo(a,b,n):
+def PowerModulo(a,k,n):
+    b_bin = bin(k)[2:]                  # lista bitow - od drugiego (wycinamy 0b)
+    b_len = len(b_bin)                  # dlugos listy bitow
+    wynik = 1  # result
+    mod = a % n
 
-    b_bin = bin(b)                        #lista bitow
-    b_bin_len = len(b_bin)
+    for i in range(b_len - 1, -1, -1):  # idziemy od konca listy
+        if b_bin[i] == '1':
+            wynik = wynik * mod % n
 
-    wynik = 1
-    mod = a%n
-    for i in range(b_bin_len-1, -1, -1):
-        if b_bin[i]=='1':                     #jezeli mamy w zapisie binarnym jedynki - liczymy potegi
-            wynik=wynik*mod%n
-        wynik = wynik**2                #do kwadratu
-        wynik = wynik%n
+        mod = mod**2
+        mod = mod%n
+
     return wynik
-
-PowerModulo(1,3,1)
 
 def Intersect(a,b):
     import math
