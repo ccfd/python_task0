@@ -28,14 +28,19 @@ def LotOfHash(n):
 
 def PowerModulo(a,b,n):
 
-    out = 1
-    if(b%2==0):
-        for k in range(0, b/2):
-            out = out * a**2
-    else:
-        for k in range(0, b):
-            out=out*a
-    return out%n
+    b_bin = bin(b)                        #lista bitow
+    b_bin_len = len(b_bin)
+
+    wynik = 1
+    mod = a%n
+    for i in range(b_bin_len-1, -1, -1):
+        if b_bin[i]=='1':                     #jezeli mamy w zapisie binarnym jedynki - liczymy potegi
+            wynik=wynik*mod%n
+        wynik = wynik**2                #do kwadratu
+        wynik = wynik%n
+    return wynik
+
+PowerModulo(1,3,1)
 
 def Intersect(a,b):
     import math
