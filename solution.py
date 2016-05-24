@@ -1,4 +1,6 @@
 def Newton(n, m):
+    if m>n/2:
+        m=n-m
     if m==0 or m==n:
         return 1
     elif n < 0 or m < 0:
@@ -6,7 +8,14 @@ def Newton(n, m):
     elif n < m:
         return "Blad danych"
     else:
-        return Newton(n-1, m-1) + Newton(n-1, m)
+        tab=[[0 for k in range(m+1)] for k in range(n+1)]
+        for i in range(n+1):
+            for j in range(min(i,k)+1):
+                if j==0 or j==i:
+                    tab[i][j] = 1
+                else:
+                    tab[i][j]=tab[i-1][j-1]+tab[i-1][j]
+    return tab[n][k]
 
 def Pascal(n):
     if n==0:
