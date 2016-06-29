@@ -23,13 +23,13 @@ def Triangle(N):
 
 # zadanie 1
 def Pascal(N):
-    print Triangle(N-1)
+    return Triangle(N-1)
 
 
 # zadanie 2
 def Newton(N,M):
     trojkat = Triangle(N)
-    print trojkat[N][M]
+    return trojkat[N][M]
 
 
 #zadanie 3
@@ -68,7 +68,7 @@ def PowerModulo(a,b,n):
             wynik *= a
         wynik %= n
 
-    print wynik
+    return wynik
 
 
 
@@ -82,11 +82,11 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     odl_srodkow = ( (x1-x2)**2 + (y1-y2)**2)**0.5
 
     if(odl_srodkow == 0.):                                                  # wspolsrodkowe!
-        print "przemysl to jeszcze raz"
         return -1
+
     if odl_srodkow > r1 + r2 or odl_srodkow < abs( r1 - r2):                # rozlaczne
-        print "[ ]"
-        return
+        return "[ ]"
+
 
 
     wektor = ( (x2-x1)*r1/odl_srodkow, (y2-y1)*r1/odl_srodkow)              # wektor o kierunku wektora_AB i dlugosci r1
@@ -95,8 +95,7 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     sin_alfa = (1 - cos_alfa**2)**0.5                                       # alfa e ( 0*, 180* ) -> sin(alfa) > 0
 
     if odl_srodkow == r1+r2 or odl_srodkow == abs(r1-r2):                   # styczne wew. lub zew.
-        print ( x1+wektor[0], y1+wektor[1])
-        return
+        return [ ( x1+wektor[0], y1+wektor[1]) ]
 
 
     # obroc wektor o kat alfa w prawo:
@@ -106,21 +105,5 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     # obroc wektor o kat alfa w lewo:
     P2 = (x1 + wektor[0] * cos_alfa + wektor[1] * sin_alfa, y1 + wektor[1] * cos_alfa - wektor[0] * sin_alfa)
 
-    print (P1, P2)
 
-
-
-
-
-
-# Newton(200,2)
-# Pascal(4)
-# LotOfHash(6)
-# PowerModulo(2,3,10)
-# PowerModulo(2,4,10)
-# PowerModulo(2,5,10)
-# Intersect( (0,0,5), (6,0,5) )
-# Intersect( (0,0,5), (10,0,5) )
-# Intersect( (0,0,5), (15,0,5) )
-# Intersect( (0,0,2), (3,1,4) )
-# Intersect( (0,0,2), (1,0,1) )
+    return [P1, P2]
