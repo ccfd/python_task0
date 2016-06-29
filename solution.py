@@ -79,13 +79,15 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     # B - srodek okregu 2
     # alfa to kat <(P1, A, B) = <(P2, A, B) ; gdzie P1 i P2 to pkty przeciecia
 
+    wynik = []
+
     odl_srodkow = ( (x1-x2)**2 + (y1-y2)**2)**0.5
 
     if(odl_srodkow == 0.):                                                  # wspolsrodkowe!
         return -1
 
     if odl_srodkow > r1 + r2 or odl_srodkow < abs( r1 - r2):                # rozlaczne
-        return "[ ]"
+        return wynik
 
 
 
@@ -95,7 +97,8 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     sin_alfa = (1 - cos_alfa**2)**0.5                                       # alfa e ( 0*, 180* ) -> sin(alfa) > 0
 
     if odl_srodkow == r1+r2 or odl_srodkow == abs(r1-r2):                   # styczne wew. lub zew.
-        return [ ( x1+wektor[0], y1+wektor[1]) ]
+        wynik.append( ( x1+wektor[0], y1+wektor[1]))
+        return wynik
 
 
     # obroc wektor o kat alfa w prawo:
@@ -105,5 +108,6 @@ def Intersect( (x1,y1,r1), (x2,y2,r2)):
     # obroc wektor o kat alfa w lewo:
     P2 = (x1 + wektor[0] * cos_alfa + wektor[1] * sin_alfa, y1 + wektor[1] * cos_alfa - wektor[0] * sin_alfa)
 
-
-    return [P1, P2]
+    wynik.append(P1)
+    wynik.append(P2)
+    return wynik
