@@ -36,7 +36,7 @@ def LotOfHash(n):
 def PowerModulo(a,b,n):
     w1 = a**b
     w2 = w1%n
-    print w2
+    return w2
 
 def Intersect((x1,y1,r1),(x2,y2,r2)):
     w =[]
@@ -49,12 +49,17 @@ def Intersect((x1,y1,r1),(x2,y2,r2)):
     elif p==r1+r2 or p==fabs(r1-r2):                           #okregi styczne
         x = x1 + e*k / p + (f / p)*sqrt(r1 ** 2 - k ** 2)
         y = y1 + f*k / p - (e / p)*sqrt(r1 ** 2 - k ** 2)
-        w = [x,y]
+        p = (x,y)
+        w.append(p)
     else:                                                   #okregi przecinaja sie
         x01 = x1 + e * k / p + (f / p) * sqrt(r1 ** 2 - k ** 2)
         y01 = y1 + f * k / p - (e / p) * sqrt(r1 ** 2 - k ** 2)
+        p1 = (x01, y01)
+        w.append(p1)
 
         x02 = x1 + e * k / p - (f / p) * sqrt(r1 ** 2 - k ** 2)
         y02 = y1 + f * k / p + (e / p) * sqrt(r1 ** 2 - k ** 2)
-        w = [(x01,y01),(x02,y02)]
-    print w
+        p2 = (x02, y02)
+        w.append(p2)
+
+    return w
